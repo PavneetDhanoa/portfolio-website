@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pavneet Dhanoa — Data Science Portfolio</title>
+
+  <!-- Google Fonts: Inter for clean, modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+       Fixed to the top of the page. Name on the left, links right.
+       Gets a dark background when the user scrolls down (via JS).
+  ============================================================ -->
+  <nav class="navbar" id="navbar">
+    <!-- Your logo + name -->
+    <div class="nav-logo">
+      <img src="images/logo.png" alt="Pavneet Dhanoa Logo" class="nav-logo-img" />
+      <span>Pavneet Dhanoa</span>
+    </div>
+
+    <!-- Mobile hamburger button (shown on small screens) -->
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Navigation links — each href targets a section id on the page -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ============================================================
+       HERO SECTION
+       Full-screen intro. The main first impression.
+       Text and buttons animate in on page load (via CSS + JS class).
+  ============================================================ -->
+  <section class="hero" id="home">
+    <div class="hero-content" id="heroContent">
+
+      <!-- Small greeting line above the headline -->
+      <p class="hero-greeting">Hello, I'm Pavneet Dhanoa</p>
+
+      <!-- Main headline — the big statement -->
+      <!-- TO CHANGE: edit the text inside the <h1> tag -->
+      <h1 class="hero-headline">Turning data into<br />real decisions.</h1>
+
+      <!-- Supporting sentence below the headline -->
+      <!-- TO CHANGE: edit the text inside this <p> tag -->
+      <p class="hero-sub">
+        Data Science student building practical projects in Python, analytics, and real-world problem solving.
+      </p>
+
+      <!-- Call-to-action buttons -->
+      <div class="hero-buttons">
+        <!-- "View Projects" scrolls down to the #projects section -->
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <!-- "Contact Me" scrolls down to the #contact section -->
+        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+      </div>
+
+    </div>
+
+    <!-- Decorative bottom fade into the next section -->
+    <div class="hero-fade"></div>
+  </section>
+
+
+  <!-- ============================================================
+       PROJECTS SECTION
+       Clean premium cards, centered imagery, and detail modal.
+  ============================================================ -->
+  <section class="projects" id="projects">
+    <div class="container">
+
+      <div class="section-header fade-up">
+        <span class="section-label">Work</span>
+        <h2 class="section-title">Featured Projects</h2>
+      </div>
+
+      <!-- Project cards grid -->
+      <div class="projects-grid">
+
+        <!-- ---- PROJECT CARD 1 ---- -->
+        <div class="project-card fade-up delay-0">
+          <div class="project-card-inner">
+            <div class="project-number">01</div>
+            <h3 class="project-title">House Price Predictor</h3>
+            <p class="project-desc">
+              Predict home values with a regression model using engineered features, validation, and clean plotting outputs.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">scikit-learn</span>
+              <span class="stack-tag">Pandas</span>
+              <span class="stack-tag">Matplotlib</span>
+            </div>
+            <div class="project-thumbnail">
+              <img src="images/house-price-predictor-1.png" alt="House Price Predictor preview" loading="lazy" />
+            </div>
+            <div class="project-actions">
+              <button class="btn btn-secondary project-details-btn" data-project="house-price">View Details</button>
+              <a href="https://github.com/PavneetDhanoa/HousePricePredictor.git" target="_blank" rel="noopener" class="btn btn-primary">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- PROJECT CARD 2 ---- -->
+        <div class="project-card fade-up delay-1">
+          <div class="project-card-inner">
+            <div class="project-number">02</div>
+            <h3 class="project-title">Expense Tracker</h3>
+            <p class="project-desc">
+              Track spending, categories, and trends with a lean Python dashboard and plots.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">Pandas</span>
+              <span class="stack-tag">Matplotlib</span>
+            </div>
+            <div class="project-thumbnail">
+              <img src="images/expense-tracker-1.png" alt="Expense Tracker preview" loading="lazy" />
+            </div>
+            <div class="project-actions">
+              <button class="btn btn-secondary project-details-btn" data-project="expense-tracker">View Details</button>
+              <a href="https://github.com/PavneetDhanoa/Expense-Tracker.git" target="_blank" rel="noopener" class="btn btn-primary">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- PROJECT CARD 3 ---- -->
+        <div class="project-card fade-up delay-2">
+          <div class="project-card-inner">
+            <div class="project-number">03</div>
+            <h3 class="project-title">Financial Analytics Tool</h3>
+            <p class="project-desc">
+              Automated reporting, cleaning, and graph generation for financial datasets.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">CSV</span>
+              <span class="stack-tag">Data Analysis</span>
+            </div>
+            <div class="project-thumbnail">
+              <img src="images/financial-tool-1.png.PNG" alt="Financial Analytics Tool preview" loading="lazy" />
+            </div>
+            <div class="project-actions">
+              <button class="btn btn-secondary project-details-btn" data-project="financial-tool">View Details</button>
+              <a href="https://github.com/PavneetDhanoa/python-finance-analysis.git" target="_blank" rel="noopener" class="btn btn-primary">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- PROJECT CARD 4 ---- -->
+        <div class="project-card fade-up delay-3">
+          <div class="project-card-inner">
+            <div class="project-number">04</div>
+            <h3 class="project-title">Portfolio Website</h3>
+            <p class="project-desc">
+              My own sleek portfolio design, with responsive layout and smooth interactions.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">HTML</span>
+              <span class="stack-tag">CSS</span>
+              <span class="stack-tag">JavaScript</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn btn-secondary project-details-btn" data-project="portfolio-website">View Details</button>
+              <a href="https://github.com/PavneetDhanoa/PavneetDhanoa.git" target="_blank" rel="noopener" class="btn btn-primary">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- PROJECT CARD 5 ---- -->
+        <div class="project-card fade-up delay-4">
+          <div class="project-card-inner">
+            <div class="project-number">05</div>
+            <h3 class="project-title">Personal README</h3>
+            <p class="project-desc">
+              My GitHub profile README showcasing my skills, learning path, and professional focus.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">Markdown</span>
+              <span class="stack-tag">GitHub</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn btn-secondary project-details-btn" data-project="personal-readme">View Details</button>
+              <a href="https://github.com/PavneetDhanoa/PavneetDhanoa.git" target="_blank" rel="noopener" class="btn btn-primary">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /projects-grid -->
+    </div><!-- /container -->
+
+    <!-- Details modal, opens on View Details click -->
+    <div class="project-modal" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="project-modal-backdrop" data-close="true"></div>
+      <div class="project-modal-card">
+        <button class="project-modal-close" id="projectModalClose" aria-label="Close project details">×</button>
+        <h3 class="project-modal-title"></h3>
+        <p class="project-modal-description"></p>
+        <div class="project-modal-gallery" id="projectModalGallery"></div>
+        <p class="project-modal-subtitle">What the visuals show</p>
+        <p class="project-modal-insight" id="projectModalInsight"></p>
+        <div class="project-modal-actions">
+          <a href="#" id="projectModalGitHub" target="_blank" rel="noopener" class="btn btn-primary">GitHub</a>
+          <button class="btn btn-secondary" id="projectModalCloseBtn">Close</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT SECTION
+       Brief bio and skill tags.
+       TO CHANGE: edit the paragraph text or add/remove skill tags.
+  ============================================================ -->
+  <section class="about" id="about">
+    <div class="container">
+
+      <div class="section-header fade-up">
+        <span class="section-label">Background</span>
+        <h2 class="section-title">About Me</h2>
+      </div>
+
+      <div class="about-grid fade-up delay-1">
+
+        <!-- Bio paragraph -->
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>
+            I am a Data Science student at the University of Calgary with a background in programming and hands-on work experience. I focus on building practical tools using Python and data analysis to solve real-world problems.
+          </p>
+          <p>
+            I enjoy working with messy data, breaking it down, and turning it into clear, useful insights that actually help make decisions.
+          </p>
+          <p>
+            I’m actively looking for entry-level roles in QA, IT Support, Junior Data Analyst, or Software Support / Junior Developer (Python/Java).
+          </p>
+          <h3>Skills</h3>
+          <p>
+            Python, Java, SQL<br>
+            Problem-solving, debugging, basic testing<br>
+            Data handling<br>
+            Strong communication & team leadership
+          </p>
+        </div>
+
+        <!-- Skills tags -->
+        <div class="about-skills">
+          <h3 class="skills-label">Skills &amp; Tools</h3>
+          <div class="skills-grid">
+            <!-- TO CHANGE: add or remove <span> tags to update your skills -->
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Data Analysis</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">HTML / CSS</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+
+      </div><!-- /about-grid -->
+    </div><!-- /container -->
+  </section>
+
+
+  <!-- ============================================================
+       CONTACT SECTION
+       Links and a short call to action.
+       TO CHANGE: replace the placeholder email, GitHub, and LinkedIn.
+  ============================================================ -->
+  <section class="contact" id="contact">
+    <div class="container">
+
+      <div class="section-header fade-up">
+        <span class="section-label">Get in Touch</span>
+        <h2 class="section-title">Contact</h2>
+      </div>
+
+      <p class="contact-intro fade-up delay-1">
+        I'm always open to new opportunities, collaborations, or just a
+        good conversation about data. Feel free to reach out.
+      </p>
+
+      <div class="contact-links fade-up delay-2">
+
+        <!-- Replace with your real email address -->
+        <a href="mailto:pavneet.dhanoa2104@gmail.com" class="contact-item">
+          <span class="contact-icon">✉</span>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">pavneet.dhanoa2104@gmail.com</span>
+        </a>
+
+        <a href="https://github.com/PavneetDhanoa" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-icon">⌥</span>
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">github.com/PavneetDhanoa</span>
+        </a>
+
+      </div>
+
+    </div><!-- /container -->
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       Simple one-liner at the bottom.
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Pavneet Dhanoa. Built with HTML, CSS &amp; JavaScript.</p>
+    </div>
+  </footer>
+
+
+  <!-- Main JavaScript file — handles scroll effects, animations, etc. -->
+  <script src="script.js"></script>
+</body>
+</html>

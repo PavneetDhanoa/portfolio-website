@@ -1,0 +1,831 @@
+/* ============================================================
+   STYLES.CSS — Pavneet Dhanoa Portfolio
+   Dark, minimal, premium aesthetic.
+   Structure:
+     1. Reset & Base
+     2. Typography
+     3. Reusable Utilities
+     4. Navigation
+     5. Hero Section
+     6. Projects Section
+     7. About Section
+     8. Contact Section
+     9. Footer
+    10. Animations
+    11. Responsive (mobile)
+============================================================ */
+
+
+/* ============================================================
+   1. RESET & BASE
+   Removes browser defaults so everything looks consistent.
+============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Smooth scrolling when nav links are clicked */
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  /* Main dark background color — change this hex to restyle the whole site */
+  background-color: #0a0a0a;
+  color: #e8e8e8;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* ============================================================
+   2. TYPOGRAPHY
+   Consistent type scale used across sections.
+============================================================ */
+
+/* Section label — the small uppercase word above each title */
+.section-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+/* Section title — the large h2 in each section */
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #f0f0f0;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+/* Thin horizontal rule used as a decorative divider */
+.divider {
+  width: 40px;
+  height: 1px;
+  background: #333;
+  margin: 1.5rem 0;
+}
+
+
+/* ============================================================
+   3. REUSABLE UTILITIES
+============================================================ */
+
+/* Centers content and limits max width */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Consistent spacing above each section's header */
+.section-header {
+  margin-bottom: 4rem;
+}
+
+/* Primary CTA button — solid white */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-primary {
+  background: #f0f0f0;
+  color: #0a0a0a;
+  border: 1px solid #f0f0f0;
+}
+
+.btn-primary:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.08);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #f0f0f0;
+  border: 1px solid #333;
+}
+
+.btn-secondary:hover {
+  border-color: #666;
+  transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   4. NAVIGATION
+   Fixed bar at the top. Becomes opaque on scroll.
+============================================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem 3rem;
+
+  /* Start fully transparent */
+  background: transparent;
+  border-bottom: 1px solid transparent;
+
+  /* Smooth transition when JS adds the .scrolled class */
+  transition: background 0.4s ease, border-color 0.4s ease, padding 0.3s ease;
+}
+
+/* Applied by JavaScript when the page scrolls down */
+.navbar.scrolled {
+  background: rgba(10, 10, 10, 0.92);
+  border-bottom-color: #1a1a1a;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Name / logo on the left */
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #f0f0f0;
+  white-space: nowrap;
+}
+
+.nav-logo-img {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Nav links on the right */
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #f0f0f0;
+}
+
+/* Mobile hamburger button — hidden on desktop */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: #e8e8e8;
+  transition: all 0.3s ease;
+}
+
+
+/* ============================================================
+   5. HERO SECTION
+   Full viewport height, centered content, dark background.
+============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Very subtle radial glow in the center — feels premium without being flashy */
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,255,255,0.025) 0%, transparent 70%),
+    #0a0a0a;
+
+  padding: 0 2rem;
+  text-align: center;
+}
+
+/* The content block inside the hero */
+.hero-content {
+  max-width: 780px;
+
+  /* Hidden by default — JavaScript adds .visible class to trigger animation */
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+/* JavaScript adds this class after a short delay to trigger the entrance */
+.hero-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* "Hello, I'm Pavneet Dhanoa" — small line above the headline */
+.hero-greeting {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* The main large headline */
+.hero-headline {
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: #f5f5f5;
+  margin-bottom: 1.5rem;
+}
+
+/* Supporting paragraph below the headline */
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-weight: 300;
+  color: #666;
+  max-width: 540px;
+  margin: 0 auto 2.8rem;
+  line-height: 1.75;
+}
+
+/* Button row */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Gradient fade at the bottom of the hero into the next section */
+.hero-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, #0a0a0a);
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   6. PROJECTS SECTION
+   Three cards in a responsive grid layout.
+============================================================ */
+
+.projects {
+  padding: 8rem 0;
+  background: #0a0a0a;
+}
+
+/* Three-column grid on desktop, collapses on mobile */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px; /* thin gap lines between cards */
+  border: 1px solid #1a1a1a;
+}
+
+/* Individual project card */
+.project-card {
+  background: #0d0d0d;
+  transition: background 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  /* Subtle top highlight line on hover */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover {
+  background: #111;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* Padding inside each card */
+.project-card-inner {
+  padding: 2.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Large number in the top-right corner of each card */
+.project-number {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #2a2a2a;
+  margin-bottom: 2rem;
+}
+
+/* Project title */
+.project-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.01em;
+}
+
+/* Project description */
+.project-desc {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.7;
+  flex: 1; /* pushes the stack tags and link to the bottom */
+  margin-bottom: 1.5rem;
+}
+
+/* Tech stack tag container */
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Individual tech tag */
+.stack-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #444;
+  border: 1px solid #1e1e1e;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+/* "View Project →" link at the bottom of each card */
+.project-link {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #555;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s ease;
+  margin-top: auto;
+}
+
+.project-link:hover {
+  color: #f0f0f0;
+}
+
+.project-link .arrow {
+  transition: transform 0.2s ease;
+}
+
+.project-link:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Project thumbnail preview */
+.project-thumbnail {
+  margin: 1.25rem 0 1.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #1b1b1b;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.project-thumbnail img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card actions row for buttons */
+.project-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.project-actions .btn {
+  padding: 0.55rem 0.95rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+}
+
+.project-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  z-index: 2000;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem 1.25rem;
+  overflow-y: auto;
+}
+
+.project-modal.active {
+  display: flex;
+}
+
+.project-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 8, 0.7);
+}
+
+.project-modal-card {
+  position: relative;
+  width: min(920px, 100%);
+  background: #0d0d0d;
+  border: 1px solid #1f1f1f;
+  border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  padding: 1.7rem 1.7rem 1.5rem;
+  z-index: 2;
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(26, 26, 26, 0.95);
+  color: #fff;
+  font-size: 1.35rem;
+  cursor: pointer;
+}
+
+.project-modal-title {
+  margin-bottom: 0.35rem;
+  font-size: 1.6rem;
+  color: #fefefe;
+}
+
+.project-modal-description,
+.project-modal-insight {
+  font-size: 0.94rem;
+  color: #d4d4d4;
+  line-height: 1.65;
+  margin-bottom: 0.95rem;
+}
+
+.project-modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.project-modal-gallery img {
+  width: 100%;
+  min-height: 135px;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #1f1f1f;
+}
+
+.project-modal-subtitle {
+  margin: 0.4rem 0 0.15rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #747474;
+  letter-spacing: 0.15em;
+}
+
+.project-modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+}
+
+.project-modal-actions .btn {
+  padding: 0.62rem 1rem;
+  font-size: 0.78rem;
+  border-radius: 5px;
+}
+
+@media (max-width: 900px) {
+  .project-modal-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .project-thumbnail img {
+    height: 135px;
+  }
+}
+.about-text p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #777;
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Skills column heading */
+.skills-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #3a3a3a;
+  margin-bottom: 1.25rem;
+}
+
+/* Grid of skill tags */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* Individual skill tag */
+.skill-tag {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #888;
+  border: 1px solid #1e1e1e;
+  padding: 0.45rem 0.9rem;
+  border-radius: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-tag:hover {
+  color: #e0e0e0;
+  border-color: #333;
+}
+
+
+/* ============================================================
+   8. CONTACT SECTION
+   Intro sentence + three contact items stacked vertically.
+============================================================ */
+
+.contact {
+  padding: 8rem 0;
+  background: #0a0a0a;
+}
+
+/* Short paragraph above the links */
+.contact-intro {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #555;
+  max-width: 520px;
+  line-height: 1.8;
+  margin-bottom: 4rem;
+}
+
+/* Stacked list of contact methods */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid #1a1a1a;
+  max-width: 600px;
+}
+
+/* Single contact row */
+.contact-item {
+  display: grid;
+  grid-template-columns: 2.5rem 120px 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.4rem 1.75rem;
+  border-bottom: 1px solid #141414;
+  transition: background 0.25s ease;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-item:hover {
+  background: #0f0f0f;
+}
+
+/* Small icon / symbol on the left */
+.contact-icon {
+  font-size: 0.85rem;
+  color: #333;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Label like "Email", "GitHub" */
+.contact-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #3a3a3a;
+}
+
+/* The actual link/value text */
+.contact-value {
+  font-size: 0.85rem;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.contact-item:hover .contact-value {
+  color: #aaa;
+}
+
+
+/* ============================================================
+   9. FOOTER
+============================================================ */
+
+.footer {
+  padding: 2rem 0;
+  border-top: 1px solid #141414;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 0.75rem;
+  color: #2e2e2e;
+  letter-spacing: 0.04em;
+}
+
+
+/* ============================================================
+   10. ANIMATIONS
+   Elements fade up as they enter the viewport.
+   JavaScript adds the .in-view class using IntersectionObserver.
+============================================================ */
+
+/* Elements that should animate in — start invisible and shifted down */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+/* Triggered by JavaScript when element enters viewport */
+.fade-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay helpers — add to children for cascading effect */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+
+
+/* ============================================================
+   11. RESPONSIVE — MOBILE
+   Stacks layouts vertically on smaller screens.
+============================================================ */
+
+@media (max-width: 900px) {
+
+  /* Projects: 2 columns on tablet */
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* About: stack vertically */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+}
+
+@media (max-width: 640px) {
+
+  /* Smaller padding on mobile */
+  .navbar {
+    padding: 1.25rem 1.5rem;
+  }
+
+  /* Hide nav links — show hamburger toggle instead */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.97);
+    padding: 1.5rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  /* When the mobile menu is open (class added by JS) */
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Projects: single column on mobile */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Slightly smaller section padding */
+  .projects,
+  .about,
+  .contact {
+    padding: 5rem 0;
+  }
+
+  /* Contact rows stack more nicely */
+  .contact-item {
+    grid-template-columns: 2rem 90px 1fr;
+    gap: 0.75rem;
+    padding: 1.2rem 1.25rem;
+  }
+
+}
