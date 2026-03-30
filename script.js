@@ -163,14 +163,14 @@ const projectData = {
   'portfolio-website': {
     title: 'Portfolio Website',
     description: 'Minimal, modern website with smooth transitions and responsive sections.',
-    insight: 'Page details showcase design and content structure without needing a screenshot.',
+    insight: '',
     github: 'https://github.com/PavneetDhanoa/PavneetDhanoa.git',
     images: []
   },
   'personal-readme': {
     title: 'Personal README',
     description: 'GitHub profile README with introduction, skills, and projects.',
-    insight: 'Life and experience narrative showcased as Markdown text, no visuals needed.',
+    insight: '',
     github: 'https://github.com/PavneetDhanoa/PavneetDhanoa.git',
     images: []
   }
